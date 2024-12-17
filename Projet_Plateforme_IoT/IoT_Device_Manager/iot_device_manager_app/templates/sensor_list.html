@@ -1,0 +1,153 @@
+{% extends 'index.html' %}
+
+{% block title %}Liste des capteurs{% endblock %}
+
+{% block content %}
+<div class="container fade-in">
+    <h1>Liste des capteurs</h1>
+    
+    <div class="action-bar">
+        <a href="{% url 'sensor_create' %}" class="add-button">
+            <span>+</span> Ajouter un capteur
+        </a>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Longitude</th>
+                    <th>Latitude</th>
+                    <th>Période</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sensor in sensors %}
+                <tr>
+                    <td>{{ sensor.id }}</td>
+                    <td>{{ sensor.name }}</td>
+                    <td>{{ sensor.longi }}</td>
+                    <td>{{ sensor.lati }}</td>
+                    <td>{{ sensor.period }}</td>
+                    <td class="actions">
+                        <a href="{% url 'sensor_detail' sensor.pk %}" class="btn btn-view">Voir</a>
+                        <a href="{% url 'sensor_update' sensor.pk %}" class="btn btn-edit">Modifier</a>
+                        <a href="{% url 'sensor_delete' sensor.pk %}" class="btn btn-delete">Supprimer</a>
+                        <a href="{% url 'sensor_visualization_detail' sensor.pk %}" class="btn btn-visualize">Visualiser</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .action-bar {
+        margin: 20px 0;
+        text-align: right;
+    }
+
+    .add-button {
+        display: inline-block;
+        background: #2ecc71;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .add-button:hover {
+        background: #27ae60;
+        transform: translateY(-2px);
+    }
+
+    .table-container {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+
+    thead tr {
+        background: #f8f9fa;
+        color: #2c3e50;
+    }
+
+    tbody tr:hover {
+        background: #f8f9fa;
+    }
+
+    .actions {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+        font-size: 0.9em;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .btn-view {
+        background: #3498db;
+    }
+
+    .btn-edit {
+        background: #f1c40f;
+    }
+
+    .btn-delete {
+        background: #e74c3c;
+    }
+
+    .btn-visualize {
+        background: #9b59b6;
+    }
+
+    @media (max-width: 768px) {
+        .table-container {
+            padding: 10px;
+        }
+
+        table {
+            font-size: 0.9em;
+        }
+
+        .actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            text-align: center;
+        }
+    }
+</style>
+{% endblock %}

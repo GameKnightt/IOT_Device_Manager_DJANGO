@@ -1,0 +1,17 @@
+<!-- sensor_form.html -->
+{% extends 'index.html' %}
+
+{% block title %}{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} un capteur{% endblock %}
+
+{% block content %}
+<div class="container fade-in">
+    <div class="form-card">
+        <h1>{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} un capteur</h1>
+        <form method="post" class="styled-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-button">Enregistrer</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

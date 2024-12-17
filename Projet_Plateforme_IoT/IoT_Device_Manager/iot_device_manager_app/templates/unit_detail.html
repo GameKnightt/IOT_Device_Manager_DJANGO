@@ -1,0 +1,16 @@
+<!-- unit_detail.html -->
+{% extends 'index.html' %}
+
+{% block title %}Détail de l'unité{% endblock %}
+
+{% block content %}
+<div class="container fade-in">
+    <div class="detail-card">
+        <h1>Détail de l'unité</h1>
+        <div class="detail-content">
+            <p><strong>ID:</strong> {{ unit.id }}</p>
+            <p><strong>Nom:</strong> {{ unit.name }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

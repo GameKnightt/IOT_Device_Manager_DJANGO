@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block title %}Détail du capteur{% endblock %}
+
+{% block content %}
+<div class="container fade-in">
+    <div class="detail-card">
+        <h1>Détail du capteur</h1>
+        <div class="detail-content">
+            <p><strong>ID:</strong> {{ sensor.id }}</p>
+            <p><strong>Nom:</strong> {{ sensor.name }}</p>
+            <p><strong>Longitude:</strong> {{ sensor.longi }}</p>
+            <p><strong>Latitude:</strong> {{ sensor.lati }}</p>
+            <p><strong>Période:</strong> {{ sensor.period }}</p>
+        </div>
+
+        <div class="stats">
+            <h2>Statistiques des mesures</h2>
+            <p><strong>Valeur maximale:</strong> {% if stats.max_value %}{{ stats.max_value|floatformat:2 }}{% else %}Pas de données{% endif %}</p>
+            <p><strong>Valeur minimale:</strong> {% if stats.min_value %}{{ stats.min_value|floatformat:2 }}{% else %}Pas de données{% endif %}</p>
+            <p><strong>Valeur moyenne:</strong> {% if stats.avg_value %}{{ stats.avg_value|floatformat:2 }}{% else %}Pas de données{% endif %}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

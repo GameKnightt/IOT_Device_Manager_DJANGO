@@ -1,0 +1,33 @@
+<!-- LESAULNIER Alexy et MOURGUES Kylian GEII 3 - AII - TP2 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}IoT Platform{% endblock %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+    
+</head>
+<body>
+    <div class="container fade-in">
+        <h1>IoT Plateforme GEII</h1>
+        
+        <nav>
+            <a href="{% url 'sensor_list' %}">Liste des capteurs</a>
+            <a href="{% url 'unit_list' %}">Liste des unités</a>
+            <a href="{% url 'sensor_visualization' %}">Visualisation des données</a>
+            <a href="{% url 'sensor_create' %}">Ajouter un capteur</a>
+            <a href="{% url 'unit_create' %}">Ajouter une unité</a>
+        </nav>
+
+        <div class="content-section">
+            {% block content %}<p><center>Par la supervision des fabuleux professeurs MOURCHERE Harold et AMALOU Nassim</center></p>{% endblock %}
+        </div>
+    </div>
+</body>
+</html>
